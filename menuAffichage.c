@@ -21,8 +21,8 @@ char affichageSelect_task(void){
 
     while((state <'1')||(state >'9')){
             printf("\n entree un nombre entre 1 et 9\n");
-            scanf("%s",&state);
-            printf("hello");
+            scanf("%c",&state);
+            //printf("hello");
         }
     return state;
 }

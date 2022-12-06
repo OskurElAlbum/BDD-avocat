@@ -3,11 +3,13 @@
 #include <string.h>
 #include "chargeDossier.h"
 
-Liste *listeDossier;
-Liste_Collaborateur *Listecollaborateur;
+
 
 Liste *chargeDossier(void)
 {
+    Liste *listeDossier;
+    Liste_Collaborateur *Listecollaborateur;
+
     char etat='0';
     printf("Entrer les fichier que vous voulez charger\n");
     printf("1. Fichier dossier\n");
