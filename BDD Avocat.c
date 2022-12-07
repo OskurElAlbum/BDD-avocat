@@ -26,7 +26,8 @@ int main(int argc, char *argv[])
 
         case AJOUTER_UN_DOSSIER:
             printf("\najouter un dossier\n\n");
-            //creerDossier ();
+            list=chargeDossier();
+            creerDossier ();
             state = MENU_PRINCIPAL;
             break;
 

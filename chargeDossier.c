@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "chargeDossier.h"
+#include "ajoutDossier.h"
 
 Liste *listeDossier;
 Liste_Collaborateur *Listecollaborateur;

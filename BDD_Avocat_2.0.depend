@@ -45,3 +45,49 @@
 
 1670280088 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\supprimercollaborateur.c
 
+1670348695 source:c:\users\utilisateur\documents\github\bdd-avocat\affichagedossier.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"chargeDossier.h"
+
+1670452749 c:\users\utilisateur\documents\github\bdd-avocat\chargedossier.h
+
+1670348695 source:c:\users\utilisateur\documents\github\bdd-avocat\ajoutcollaborateur.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"chargeDossier.h"
+
+1670450828 source:c:\users\utilisateur\documents\github\bdd-avocat\bdd avocat.c
+	<stdio.h>
+	<stdlib.h>
+	"menuAffichage.h"
+	"ajoutDossier.h"
+	"chargeDossier.h"
+	"affichageDossier.h"
+
+1670348695 c:\users\utilisateur\documents\github\bdd-avocat\menuaffichage.h
+
+1670348695 c:\users\utilisateur\documents\github\bdd-avocat\ajoutdossier.h
+
+1670348695 c:\users\utilisateur\documents\github\bdd-avocat\affichagedossier.h
+
+1670452990 source:c:\users\utilisateur\documents\github\bdd-avocat\chargedossier.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"chargeDossier.h"
+	"ajoutDossier.h"
+
+1670348695 source:c:\users\utilisateur\documents\github\bdd-avocat\menuaffichage.c
+	<stdio.h>
+	<stdlib.h>
+	"menuAffichage.h"
+
+1670452414 source:c:\users\utilisateur\documents\github\bdd-avocat\ajoutdossier.c
+	<stdio.h>
+	<stdlib.h>
+	"ajoutDossier.h"
+	"chargeDossier.h"
+
