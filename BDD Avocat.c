@@ -9,14 +9,14 @@ Liste* list;
 
 int main(int argc, char *argv[])
 {
-    char state ='0';
+    char state = MENU_PRINCIPAL;
     while (1)
     {
         switch (state)
         {
         case MENU_PRINCIPAL:
             state = affichageSelect_task();
-            printf("hello");
+            //printf("hello");
             break;
         case CHARGER_UN_FICHIER:
             printf("charger un fichier \n");
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 
         case AFFICHER_INFORMATION_DOSSIER:
             printf("Afficher les donnee d'un dossier\n");
-            //affichageDossier(list);
+            affichageDossier(list);
             state = MENU_PRINCIPAL;
             break;
 

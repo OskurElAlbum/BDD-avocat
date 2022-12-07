@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1670311727 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\bdd avocat.c
+1670349726 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\bdd avocat.c
 	<stdio.h>
 	<stdlib.h>
 	"menuAffichage.h"
@@ -11,7 +11,7 @@
 
 1670074344 c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\ajoutdossier.h
 
-1670311710 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\menuaffichage.c
+1670348885 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\menuaffichage.c
 	<stdio.h>
 	<stdlib.h>
 	"menuAffichage.h"
@@ -23,7 +23,7 @@
 
 1670253355 c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\chargedossier.h
 
-1670318231 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\chargedossier.c
+1670349500 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\chargedossier.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
