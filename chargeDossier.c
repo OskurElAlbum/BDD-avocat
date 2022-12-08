@@ -5,10 +5,11 @@
 
 
 
-Liste *chargeDossier(void)
+struct Double_liste *chargeDossier(void)
 {
     Liste *listeDossier;
     Liste_Collaborateur *Listecollaborateur;
+    Double_liste * Doubleliste = malloc(sizeof(*Doubleliste));
 
     char etat='0';
     printf("Entrer les fichier que vous voulez charger\n");
@@ -22,23 +23,35 @@ Liste *chargeDossier(void)
     FILE * fic;
     if (etat =='1'){
         printf("Chargement du fichier des Dossiers\n");
-        listeDossier=UtilisationDossier(fic);
-        affichliste(listeDossier);
+        Doubleliste->Liste_Dossier=UtilisationDossier(fic);
+        affichliste(Doubleliste->Liste_Dossier);
+        //Doubleliste->Liste_Dossier=listeDossier;
     }
     else if (etat =='2'){
         printf("Chargement fichier des Collaborateurs\n");
-        Listecollaborateur=UtilisationCollaborateur(fic);
-        supprimerCollaborateur(Listecollaborateur);
-        affichlistec(Listecollaborateur);
+        Doubleliste->Liste_Collabo/*Listecollaborateur*/=UtilisationCollaborateur(fic);
+        affichlistec(Doubleliste->Liste_Collabo);
+
+        //Doubleliste->Liste_Collabo=Listecollaborateur;
+        /*//printf("ouai");
+        //printf("%s",Doubleliste->Liste_Collabo);
+        Collaborateur *actuel = Doubleliste->Liste_Collabo->premier;
+        affichlistec(Doubleliste->Liste_Collabo);*/
+        //printf("%s\n", actuel->Nom);
 
     }
     else if(etat =='3'){
         printf("Chargement des fichier des Dossiers et des Collaborateurs\n");
-        listeDossier=UtilisationDossier(fic);
-        Listecollaborateur=UtilisationCollaborateur(fic);
+        Doubleliste->Liste_Dossier=UtilisationDossier(fic);
+        Doubleliste->Liste_Collabo=UtilisationCollaborateur(fic);
+
+        //Doubleliste->Liste_Dossier=listeDossier->premier;
+
+        //Doubleliste->Liste_Collabo=Listecollaborateur;
     }
     printf("\ndossier chargee\n\n");
-    return listeDossier;
+    //printf("%s",Doubleliste->Liste_Collabo);
+    return /*Listecollaborateur*/Doubleliste;
 }
 
 
@@ -128,51 +141,12 @@ Liste_Collaborateur *UtilisationCollaborateur(FILE * fic)
 void affichlistec(Liste_Collaborateur *liste);
 
 void affichlistec(Liste_Collaborateur *liste){
+
     Collaborateur *actuel = liste->premier;
+
     while (actuel != NULL)
     {
         printf("%s\n", actuel->Nom);
         actuel = actuel->suivant;
     }
-}
-void supprimerCollaborateur(Liste_Collaborateur *Listecollaborateur);
-void supprimerCollaborateur(Liste_Collaborateur *Listecollaborateur){
-    char Suppression[20];
-    affichlistec(Listecollaborateur);
-    printf("entrer le nom du Collaborateur a Supprimer\n");
-    scanf("%s",Suppression);
-    int i=0;
-    Collaborateur *actuel = Listecollaborateur->premier;
-    while (strcmp(actuel->Nom,Suppression)!=0)          //Affiche les informations du dossier
-    {
-        actuel = actuel->suivant;
-        i++;
-    }
-    int iCompare=0;
-    Collaborateur *precedent = Listecollaborateur->premier;
-    while(iCompare!=i-1){
-        precedent = precedent->suivant;
-        iCompare++;
-    }
-        //Collaborateur *Supprimer = Listecollaborateur->premier;
-        precedent->suivant = actuel->suivant;
-        free(actuel);
-
-    FILE * fic;
-    fic=fopen("Collaborateur.txt","w");
-    Collaborateur *listeSupprimer= Listecollaborateur->premier;
-    int i2=0;
-    while(listeSupprimer!=NULL){
-            if(listeSupprimer->suivant==NULL)
-        {
-            fprintf(fic,"%s %s %s",listeSupprimer->Nom,listeSupprimer->Prenom,listeSupprimer->Metier);// dernière ligne du fichier,on évite le retour à la ligne pour la dernière ligne.
-        }
-        else{
-        fprintf(fic,"%s %s %s\n",listeSupprimer->Nom,listeSupprimer->Prenom,listeSupprimer->Metier);
-
-        }
-        listeSupprimer = listeSupprimer->suivant;
-    }
-    //fprintf(fic,"test");
-    fclose(fic);
 }

@@ -10,10 +10,12 @@ void affichageDossier(Liste *liste){
     printf("Choisissez le dossier a consulter:\n");
     defilee_liste(liste);               //liste les dossier existant
     printf("---------------\n");
-    void verificationSaisie(Liste *liste);
+    //void verificationSaisie(Liste *liste);
 
+    scanf("%s",Affiche);
     Dossier *actuel;
-    while(Validation_Nom!=1)            //Verifie que le nom de dossier existe
+    actuel = liste->premier;
+    /*while(Validation_Nom!=1)            //Verifie que le nom de dossier existe
     {
         scanf("%s\n",Affiche);
         actuel = liste->premier;
@@ -27,10 +29,10 @@ void affichageDossier(Liste *liste){
             actuel = actuel->suivant;
             }
         }
-    }
-
+    }*/
     while (strcmp(actuel->Nom_Dossier,Affiche)!=0)          //Affiche les informations du dossier
     {
+        //printf("%s",Affiche);
         actuel = actuel->suivant;
     }
     printf("Nom du dossier:%s\n",actuel->Nom_Dossier);

@@ -1,4 +1,6 @@
-struct Liste *chargeDossier (void);
+#include <stdio.h>
+
+struct /*Liste_Collaborateur*/Double_liste *chargeDossier(void);
 struct Liste *UtilisationDossier(FILE * fic);
 struct Liste_Collaborateur *UtilisationCollaborateur(FILE * fic);
 
@@ -32,4 +34,10 @@ typedef struct Liste_Collaborateur Liste_Collaborateur;
 struct Liste_Collaborateur
 {
     Collaborateur *premier;
+};
+
+typedef struct Double_Liste Double_liste;
+struct Double_Liste{
+   Liste * Liste_Dossier;
+   Liste_Collaborateur * Liste_Collabo;
 };

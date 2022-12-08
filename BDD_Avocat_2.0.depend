@@ -1,17 +1,20 @@
 # depslib dependency file v1.0
-1670349726 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\bdd avocat.c
+1670512100 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\bdd avocat.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"menuAffichage.h"
 	"ajoutDossier.h"
 	"chargeDossier.h"
 	"affichageDossier.h"
+	"supprimerCollaborateur.h"
+	"modifierCollaborateur.h"
 
-1670311520 c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\menuaffichage.h
+1670361185 c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\menuaffichage.h
 
 1670074344 c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\ajoutdossier.h
 
-1670348885 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\menuaffichage.c
+1670361183 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\menuaffichage.c
 	<stdio.h>
 	<stdlib.h>
 	"menuAffichage.h"
@@ -21,9 +24,10 @@
 	<stdlib.h>
 	"ajoutDossier.h"
 
-1670253355 c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\chargedossier.h
+1670510708 c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\chargedossier.h
+	<stdio.h>
 
-1670349500 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\chargedossier.c
+1670513903 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\chargedossier.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -35,7 +39,7 @@
 	<string.h>
 	"chargeDossier.h"
 
-1670278373 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\affichagedossier.c
+1670360801 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\affichagedossier.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -43,5 +47,27 @@
 
 1670275318 c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\affichagedossier.h
 
-1670280088 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\supprimercollaborateur.c
+1670442177 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\supprimercollaborateur.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"supprimerCollaborateur.h"
+	"chargeDossier.h"
+
+1670442177 c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\supprimercollaborateur.h
+
+1670442072 c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\modifiercollaborateur.h
+
+1670446177 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\modifiercollaborateur.c
+	<stdlib.h>
+	<string.h>
+	"supprimerCollaborateur.h"
+	"chargeDossier.h"
+
+1670448548 source:c:\users\maxen\desktop\test codeblock\bdd_avocat_2.0\affichagedossiercollaborateur.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"chargeDossier.h"
+	"supprimerCollaborateur.h"
 
