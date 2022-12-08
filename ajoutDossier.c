@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "ajoutDossier.h"
 #include "chargeDossier.h"
 /*
@@ -10,8 +11,9 @@ etat du dossier
 nom de l'avocat en charge du dossier
 nom du clerc en charge du dossier
 */
+void creerDossier (Liste * list);
 
-void creerDossier ()
+void creerDossier (Liste *list)
 {
     Dossier * nouveauDossier;
     nouveauDossier = malloc(sizeof(*nouveauDossier));
@@ -39,6 +41,6 @@ void creerDossier ()
     printf ("Veuillez entrer le nom du clerc (max 20 carractere) : ");
     scanf ("%s",nouveauDossier->Nom_clerc);
 
-    //nouveauDossier->suivant = listeDossier;
-    //listeDossier = nouveauDossier;
+    nouveauDossier->suivant = list->premier;
+    list->premier = nouveauDossier;
 }

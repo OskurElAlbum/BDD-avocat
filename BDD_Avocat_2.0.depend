@@ -59,7 +59,7 @@
 	<string.h>
 	"chargeDossier.h"
 
-1670450828 source:c:\users\utilisateur\documents\github\bdd-avocat\bdd avocat.c
+1670494313 source:c:\users\utilisateur\documents\github\bdd-avocat\bdd avocat.c
 	<stdio.h>
 	<stdlib.h>
 	"menuAffichage.h"
@@ -69,25 +69,26 @@
 
 1670348695 c:\users\utilisateur\documents\github\bdd-avocat\menuaffichage.h
 
-1670348695 c:\users\utilisateur\documents\github\bdd-avocat\ajoutdossier.h
+1670491513 c:\users\utilisateur\documents\github\bdd-avocat\ajoutdossier.h
 
 1670348695 c:\users\utilisateur\documents\github\bdd-avocat\affichagedossier.h
 
-1670452990 source:c:\users\utilisateur\documents\github\bdd-avocat\chargedossier.c
+1670494421 source:c:\users\utilisateur\documents\github\bdd-avocat\chargedossier.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"chargeDossier.h"
 	"ajoutDossier.h"
 
-1670348695 source:c:\users\utilisateur\documents\github\bdd-avocat\menuaffichage.c
+1670453055 source:c:\users\utilisateur\documents\github\bdd-avocat\menuaffichage.c
 	<stdio.h>
 	<stdlib.h>
 	"menuAffichage.h"
 
-1670452414 source:c:\users\utilisateur\documents\github\bdd-avocat\ajoutdossier.c
+1670491513 source:c:\users\utilisateur\documents\github\bdd-avocat\ajoutdossier.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"ajoutDossier.h"
 	"chargeDossier.h"
 

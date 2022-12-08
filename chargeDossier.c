@@ -177,3 +177,32 @@ void supprimerCollaborateur(Liste_Collaborateur *Listecollaborateur){
     //fprintf(fic,"test");
     fclose(fic);
 }
+
+void ecrireListDossier(Liste * list);
+void ecrireListDossier(Liste * list)
+{
+    FILE * fic;
+    fic = fopen("Dossier.txt","w");
+    Dossier * listeWrite = list->premier;
+    while(listeWrite!=NULL){
+            if(listeWrite->suivant == NULL)
+        {
+            fprintf(fic,"%s %s %s %s %s %s", listeWrite->Nom_Dossier ,
+                                             listeWrite->Date_ouverture ,
+                                             listeWrite->Date_fermeture ,
+                                             listeWrite->Etat_Dossier ,
+                                             listeWrite->Nom_avocat ,
+                                             listeWrite->Nom_clerc );
+        }
+        else{
+            fprintf(fic,"%s %s %s %s %s %s\n", listeWrite->Nom_Dossier ,
+                                               listeWrite->Date_ouverture ,
+                                               listeWrite->Date_fermeture ,
+                                               listeWrite->Etat_Dossier ,
+                                               listeWrite->Nom_avocat ,
+                                               listeWrite->Nom_clerc );
+        }
+        listeWrite = listeWrite->suivant;
+    }
+    fclose(fic);
+}
