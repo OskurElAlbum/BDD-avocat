@@ -12,6 +12,7 @@ nom de l'avocat en charge du dossier
 nom du clerc en charge du dossier
 */
 void creerDossier (Liste * list);
+void cloturerDossier (Liste *list);
 
 void creerDossier (Liste *list)
 {
@@ -43,4 +44,30 @@ void creerDossier (Liste *list)
 
     nouveauDossier->suivant = list->premier;
     list->premier = nouveauDossier;
+}
+
+void cloturerDossier (Liste *list)
+{
+    Dossier * dossierClot;
+    dossierClot = malloc(sizeof(*dossierClot));
+    Dossier * WriteDossier = list->premier;
+    printf ("Veuillez entrer le dossier à cloturer : ");
+    scanf ("%s",dossierClot->Nom_Dossier);
+    char ok[]= "cloture";
+    while (WriteDossier->suivant!=NULL)
+    {
+        if (strcasecmp(dossierClot->Nom_Dossier,WriteDossier->Nom_Dossier)==0)
+            {
+
+               // WriteDossier->Etat_Dossier[] ='cloture';
+                strcpy(WriteDossier->Etat_Dossier, "cloture");
+                printf("\n\n%s\n\n",WriteDossier->Etat_Dossier);
+                printf ("Entrer la date de cloture du dossier : ");
+                scanf ("%s",WriteDossier->Date_fermeture);
+                //verif date
+                break;
+
+            }
+        else WriteDossier = WriteDossier->suivant;
+    }
 }

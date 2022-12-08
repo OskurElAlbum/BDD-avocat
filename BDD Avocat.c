@@ -32,8 +32,11 @@ int main(int argc, char *argv[])
             state = MENU_PRINCIPAL;
             break;
 
-        case SUPPRIMER_UN_DOSSIER:
-            printf("Suprimer un dossier\n");
+        case CLOTURER_UN_DOSSIER:
+            printf("Cloturer un dossier\n");
+            list=chargeDossier();
+            cloturerDossier (list);
+            ecrireListDossier(list);
             state = MENU_PRINCIPAL;
             break;
 

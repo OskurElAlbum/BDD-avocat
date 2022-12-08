@@ -9,7 +9,7 @@ char affichageSelect_task(void){
     printf("\nSelectionner parmi les actions suivantes");
     printf("\n 1. Charger un fichier");
     printf("\n 2. Ajouter un dossier");
-    printf("\n 3. Supprimer un dossier");
+    printf("\n 3. Cloturer un dossier");
     printf("\n 4. Modifier un dossier");
     printf("\n 5. Ajouter un collaborateur");
     printf("\n 6. Modifier un collaborateur");
