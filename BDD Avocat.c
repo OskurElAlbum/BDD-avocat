@@ -1,11 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "menuAffichage.h"
 #include "ajoutDossier.h"
 #include "chargeDossier.h"
 #include "affichageDossier.h"
+#include "supprimerCollaborateur.h"
+#include "modifierCollaborateur.h"
 
-Liste* list;
+Liste * list;
+Liste_Collaborateur * listCollaborateur;
+Double_liste * Doubleliste;
 
 int main(int argc, char *argv[])
 {
@@ -20,7 +25,7 @@ int main(int argc, char *argv[])
             break;
         case CHARGER_UN_FICHIER:
             printf("charger un fichier \n");
-            list=chargeDossier();
+            /*listCollaborateur*/Doubleliste=chargeDossier();
             state = MENU_PRINCIPAL;
             break;
 
@@ -30,8 +35,9 @@ int main(int argc, char *argv[])
             state = MENU_PRINCIPAL;
             break;
 
-        case SUPPRIMER_UN_DOSSIER:
+        case SUPPRIMER_UN_COLLABORATEUR:
             printf("Suprimer un dossier\n");
+            //supprimerCollaborateur(Doubleliste->Liste_Collabo);
             state = MENU_PRINCIPAL;
             break;
 
@@ -48,6 +54,7 @@ int main(int argc, char *argv[])
 
         case MODIFIER_UN_COLLABORATEUR:
             printf("modifier un collaborateur\n");
+            modifierCollaborateur(Doubleliste->Liste_Collabo);
             state = MENU_PRINCIPAL;
             break;
 
@@ -63,7 +70,7 @@ int main(int argc, char *argv[])
 
         case AFFICHER_INFORMATION_DOSSIER:
             printf("Afficher les donnee d'un dossier\n");
-            affichageDossier(list);
+            affichageDossier(Doubleliste->Liste_Dossier);
             state = MENU_PRINCIPAL;
             break;
 
