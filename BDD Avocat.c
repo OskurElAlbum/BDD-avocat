@@ -7,6 +7,7 @@
 #include "affichageDossier.h"
 #include "supprimerCollaborateur.h"
 #include "modifierCollaborateur.h"
+#include "affichageDossierCollaborateur.h"
 
 Liste * list;
 Liste_Collaborateur * listCollaborateur;
@@ -21,7 +22,6 @@ int main(int argc, char *argv[])
         {
         case MENU_PRINCIPAL:
             state = affichageSelect_task();
-            //printf("hello");
             break;
         case CHARGER_UN_FICHIER:
             printf("charger un fichier \n");
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 
         case SUPPRIMER_UN_COLLABORATEUR:
             printf("Suprimer un dossier\n");
-            //supprimerCollaborateur(Doubleliste->Liste_Collabo);
+            supprimerCollaborateur(Doubleliste->Liste_Collabo);
             state = MENU_PRINCIPAL;
             break;
 
@@ -60,6 +60,7 @@ int main(int argc, char *argv[])
 
         case AFFICHER_LISTE_DOSSIER_SUIVI_COLLABORATEUR:
             printf("liste dossier suivi collaborateur\n");
+            AffichageDossierCollaborateur(Doubleliste->Liste_Dossier,Doubleliste->Liste_Collabo);
             state = MENU_PRINCIPAL;
             break;
 

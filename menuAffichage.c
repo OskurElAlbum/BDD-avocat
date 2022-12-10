@@ -4,7 +4,7 @@
 
 
 char affichageSelect_task(void){
-    printf("gestion BDD Cabinet avocat");
+    printf("\ngestion BDD Cabinet avocat");
     printf("\n\n MENU PRINCIPAL");
     printf("\nSelectionner parmi les actions suivantes");
     printf("\n 1. Charger un fichier");

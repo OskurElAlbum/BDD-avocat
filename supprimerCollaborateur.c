@@ -14,6 +14,38 @@ void supprimerCollaborateur(Liste_Collaborateur *Listecollaborateur){
     affichlistec(Listecollaborateur);
     printf("entrer le nom du Collaborateur a Supprimer\n");
     scanf("%s",Suppression);
+                                //Sécurité
+    int i=0;
+    Collaborateur *actuel = Listecollaborateur->premier;
+    while (strcmp(actuel->Nom,Suppression)!=0)
+    {
+        actuel = actuel->suivant;
+        i++;
+
+    }
+    printf("%d",i);
+    int iCompare=1;
+    Collaborateur *precedent = Listecollaborateur->premier;
+    if(i==0){
+        actuel->suivant=Listecollaborateur->premier;
+    }
+    else{
+        while(iCompare!=i){
+            precedent = precedent->suivant;
+            iCompare++;
+            printf("%s",precedent->Nom);
+        }
+        precedent->suivant = actuel->suivant;
+        printf("ouai4");
+    }
+        free(actuel);
+    //suppressionCollaborateurListe(Listecollaborateur,Suppression);
+
+    ecriturefichierCollaborateur(Listecollaborateur);
+
+}
+void suppressionCollaborateurListe(Liste_Collaborateur *Listecollaborateur,char Suppression);
+void suppressionCollaborateurListe(Liste_Collaborateur *Listecollaborateur,char Suppression){
     int i=0;
     Collaborateur *actuel = Listecollaborateur->premier;
     while (strcmp(actuel->Nom,Suppression)!=0)          //Affiche les informations du dossier
@@ -29,10 +61,8 @@ void supprimerCollaborateur(Liste_Collaborateur *Listecollaborateur){
     }
         precedent->suivant = actuel->suivant;
         free(actuel);
-
-    ecriturefichierCollaborateur(Listecollaborateur);
-
 }
+
 void ecriturefichierCollaborateur(Liste_Collaborateur *Listecollaborateur);
 void ecriturefichierCollaborateur(Liste_Collaborateur *Listecollaborateur){
     FILE * fic;
