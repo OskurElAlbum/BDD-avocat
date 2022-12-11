@@ -2,60 +2,26 @@
 #include <stdlib.h>
 #include <string.h>
 #include "chargeDossier.h"
-#include "ajoutDossier.h"
 
 
-
+//Permet de charger la ou les listes(dossier et collaborateur)dans des listes chainées, puis de les retourné au programme principal
 struct Double_liste *chargeDossier(void)
 {
     Liste *listeDossier;
     Liste_Collaborateur *Listecollaborateur;
     Double_liste * Doubleliste = malloc(sizeof(*Doubleliste));
 
-    char etat='0';
-    printf("Entrer les fichier que vous voulez charger\n");
-    printf("1. Fichier dossier\n");
-    printf("2. Fichier collaborateur\n");
-    printf("3. Fichier dossier et collaborateur\n");
-    while((etat <'1')||(etat >'3')){
-            printf("\n entree un nombre entre 1 et 3\n");
-            scanf("%s",&etat);
-    }
     FILE * fic;
-    if (etat =='1'){
-        printf("Chargement du fichier des Dossiers\n");
-        Doubleliste->Liste_Dossier=UtilisationDossier(fic);
-        affichliste(Doubleliste->Liste_Dossier);
-        //Doubleliste->Liste_Dossier=listeDossier;
-    }
-    else if (etat =='2'){
-        printf("Chargement fichier des Collaborateurs\n");
-        Doubleliste->Liste_Collabo/*Listecollaborateur*/=UtilisationCollaborateur(fic);
-        affichlistec(Doubleliste->Liste_Collabo);
 
-        //Doubleliste->Liste_Collabo=Listecollaborateur;
-        /*//printf("ouai");
-        //printf("%s",Doubleliste->Liste_Collabo);
-        Collaborateur *actuel = Doubleliste->Liste_Collabo->premier;
-        affichlistec(Doubleliste->Liste_Collabo);*/
-        //printf("%s\n", actuel->Nom);
+    //On souhaite charger la liste des dossiers et des Collaborateurs
+    Doubleliste->Liste_Dossier=UtilisationDossier(fic);
+    Doubleliste->Liste_Collabo=UtilisationCollaborateur(fic);
+    printf("\nfichier des Dossiers et des Collaborateurs chargee\n\n");
 
-    }
-    else if(etat =='3'){
-        printf("Chargement des fichier des Dossiers et des Collaborateurs\n");
-        Doubleliste->Liste_Dossier=UtilisationDossier(fic);
-        Doubleliste->Liste_Collabo=UtilisationCollaborateur(fic);
-
-        //Doubleliste->Liste_Dossier=listeDossier->premier;
-
-        //Doubleliste->Liste_Collabo=Listecollaborateur;
-    }
-    printf("\ndossier chargee\n\n");
-    //printf("%s",Doubleliste->Liste_Collabo);
-    return /*Listecollaborateur*/Doubleliste;
+    return Doubleliste;
 }
 
-
+//Récupère les informations du fichier des dossiers et les stockent dans une liste chainée
 Liste *UtilisationDossier(FILE * fic)
 {
     fic=fopen("Dossier.txt","r");
@@ -68,8 +34,11 @@ Liste *UtilisationDossier(FILE * fic)
     Dossier *dossier = malloc(sizeof(*dossier));
 
     Dossier *nouveau;
-    int iPremier=0;
+    int iDernier=0;
+
+    //Tant que l'on atteint pas la fin du fichier ,on récupère les information des dossiers
     while(!feof(fic)){
+        nouveau = malloc(sizeof(*nouveau));
         nouveau = malloc(sizeof(*nouveau));
         fscanf(fic,"%s %s %s %s %s %s",nouveau->Nom_Dossier,
                                         nouveau->Date_ouverture,
@@ -77,10 +46,10 @@ Liste *UtilisationDossier(FILE * fic)
                                         nouveau->Etat_Dossier,
                                         nouveau->Nom_avocat,
                                         nouveau->Nom_clerc);
-        if(iPremier==0){
+        if(iDernier==0){
+            //le dernière élement de la liste ne pointent vers rien
            nouveau->suivant=NULL;
-           iPremier++;
-           //printf("bjr");
+           iDernier++;
            }
         else{
             nouveau->suivant=liste->premier;
@@ -92,9 +61,8 @@ Liste *UtilisationDossier(FILE * fic)
     return liste;
 }
 
-void affichliste(Liste *liste);
-
-void affichliste(Liste *liste){
+//Affiche le nom des dossiers de la liste chainée
+void affichliste(struct Liste *liste){
     Dossier *actuel = liste->premier;
     while (actuel != NULL)
     {
@@ -104,10 +72,7 @@ void affichliste(Liste *liste){
 }
 
 
-
-
-
-
+//Récupère les informations du fichier des collaborateurs et les stockent dans une liste chainée
 Liste_Collaborateur *UtilisationCollaborateur(FILE * fic)
 {
     fic=fopen("Collaborateur.txt","r");
@@ -120,15 +85,18 @@ Liste_Collaborateur *UtilisationCollaborateur(FILE * fic)
     Collaborateur *collaborateur = malloc(sizeof(*collaborateur));
 
     Collaborateur *nouveau;
-    int ipremier=0;
+    int idernier=0;
+
+    //Tant que l'on atteint pas la fin du fichier ,on récupère les information des collaborateurs
     while(!feof(fic)){
         nouveau = malloc(sizeof(*nouveau));
         fscanf(fic,"%s %s %s",nouveau->Nom,
                                nouveau->Prenom,
                                nouveau->Metier);
-        if(ipremier==0){
+        if(idernier==0){
+            //le dernière élement de la liste ne pointent vers rien
            nouveau->suivant=NULL;
-           ipremier++;
+           idernier++;
            }
         else{
             nouveau->suivant=liste->premier;
@@ -139,10 +107,8 @@ Liste_Collaborateur *UtilisationCollaborateur(FILE * fic)
     return liste;
 }
 
-void affichlistec(Liste_Collaborateur *liste);
-
-void affichlistec(Liste_Collaborateur *liste){
-
+//Affiche le nom des collaborateurs de la liste chainée
+void affichlistec(struct Liste_Collaborateur *liste){
     Collaborateur *actuel = liste->premier;
 
     while (actuel != NULL)
@@ -150,75 +116,4 @@ void affichlistec(Liste_Collaborateur *liste){
         printf("%s\n", actuel->Nom);
         actuel = actuel->suivant;
     }
-}
-
-void supprimerCollaborateur(Liste_Collaborateur *Listecollaborateur);
-void supprimerCollaborateur(Liste_Collaborateur *Listecollaborateur){
-    char Suppression[20];
-    affichlistec(Listecollaborateur);
-    printf("entrer le nom du Collaborateur a Supprimer\n");
-    scanf("%s",Suppression);
-    int i=0;
-    Collaborateur *actuel = Listecollaborateur->premier;
-    while (strcmp(actuel->Nom,Suppression)!=0)          //Affiche les informations du dossier
-    {
-        actuel = actuel->suivant;
-        i++;
-    }
-    int iCompare=0;
-    Collaborateur *precedent = Listecollaborateur->premier;
-    while(iCompare!=i-1){
-        precedent = precedent->suivant;
-        iCompare++;
-    }
-        //Collaborateur *Supprimer = Listecollaborateur->premier;
-        precedent->suivant = actuel->suivant;
-        free(actuel);
-
-    FILE * fic;
-    fic=fopen("Collaborateur.txt","w");
-    Collaborateur *listeSupprimer= Listecollaborateur->premier;
-    int i2=0;
-    while(listeSupprimer!=NULL){
-            if(listeSupprimer->suivant==NULL)
-        {
-            fprintf(fic,"%s %s %s",listeSupprimer->Nom,listeSupprimer->Prenom,listeSupprimer->Metier);// dernière ligne du fichier,on évite le retour à la ligne pour la dernière ligne.
-        }
-        else{
-        fprintf(fic,"%s %s %s\n",listeSupprimer->Nom,listeSupprimer->Prenom,listeSupprimer->Metier);
-
-        }
-        listeSupprimer = listeSupprimer->suivant;
-    }
-    //fprintf(fic,"test");
-    fclose(fic);
-}
-
-void ecrireListDossier(Liste * list);
-void ecrireListDossier(Liste * list)
-{
-    FILE * fic;
-    fic = fopen("Dossier.txt","w");
-    Dossier * listeWrite = list->premier;
-    while(listeWrite!=NULL){
-            if(listeWrite->suivant == NULL)
-        {
-            fprintf(fic,"%s %s %s %s %s %s", listeWrite->Nom_Dossier ,
-                                             listeWrite->Date_ouverture ,
-                                             listeWrite->Date_fermeture ,
-                                             listeWrite->Etat_Dossier ,
-                                             listeWrite->Nom_avocat ,
-                                             listeWrite->Nom_clerc );
-        }
-        else{
-            fprintf(fic,"%s %s %s %s %s %s\n", listeWrite->Nom_Dossier ,
-                                               listeWrite->Date_ouverture ,
-                                               listeWrite->Date_fermeture ,
-                                               listeWrite->Etat_Dossier ,
-                                               listeWrite->Nom_avocat ,
-                                               listeWrite->Nom_clerc );
-        }
-        listeWrite = listeWrite->suivant;
-    }
-    fclose(fic);
 }

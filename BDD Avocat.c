@@ -2,86 +2,78 @@
 #include <stdlib.h>
 #include <string.h>
 #include "menuAffichage.h"
-#include "ajoutDossier.h"
 #include "chargeDossier.h"
 #include "affichageDossier.h"
 #include "supprimerCollaborateur.h"
 #include "modifierCollaborateur.h"
+#include "affichageDossierCollaborateur.h"
+#include "sauvegardeFichier.h"
+#include "ajoutDossier.h"
+#include "ajoutCollaborateur.h"
 
-Liste * list;
-Liste_Collaborateur * listCollaborateur;
+
 Double_liste * Doubleliste;
 
+//Fonction principal du projet
 int main(int argc, char *argv[])
 {
     char state = MENU_PRINCIPAL;
     while (1)
     {
+
+        //Machine d'état du projet
         switch (state)
         {
         case MENU_PRINCIPAL:
+            Doubleliste=chargeDossier();
             state = affichageSelect_task();
-            //printf("hello");
-            break;
-        case CHARGER_UN_FICHIER:
-            printf("charger un fichier \n");
-            /*listCollaborateur*/Doubleliste=chargeDossier();
-            state = MENU_PRINCIPAL;
             break;
 
-        case AJOUTER_UN_DOSSIER:
-            printf("\najouter un dossier\n\n");
-            list=chargeDossier();
-            creerDossier (list);
-            ecrireListDossier(list);
-            state = MENU_PRINCIPAL;
-            break;
-
-        case CLOTURER_UN_DOSSIER:
-            printf("Cloturer un dossier\n");
-            list=chargeDossier();
-            cloturerDossier (list);
-            ecrireListDossier(list);
-
-        case SUPPRIMER_UN_COLLABORATEUR:
-            printf("Suprimer un dossier\n");
-            //supprimerCollaborateur(Doubleliste->Liste_Collabo);
-
-            state = MENU_PRINCIPAL;
-            break;
-
-        case MODIFIER_UN_DOSSIER:
-            printf("modifier un dossier\n");
-            state = MENU_PRINCIPAL;
-            break;
-
-        case AJOUTER_UN_COLLABORATEUR:
-            printf("ajouter un collaborateur\n");
-            listCollaborateur=chargeDossier();
-            AjoutCollaborateur(listCollaborateur);
-            printf("ok");
-            state = MENU_PRINCIPAL;
-            break;
-
-        case MODIFIER_UN_COLLABORATEUR:
-            printf("modifier un collaborateur\n");
-            //modifierCollaborateur(Doubleliste->Liste_Collabo);
+        case AFFICHER_INFORMATION_DOSSIER:
+            printf("\nAfficher les donnee d'un dossier\n");
+            affichageDossier(Doubleliste->Liste_Dossier);
             state = MENU_PRINCIPAL;
             break;
 
         case AFFICHER_LISTE_DOSSIER_SUIVI_COLLABORATEUR:
-            printf("liste dossier suivi collaborateur\n");
+            printf("\nliste dossier suivi collaborateur\n");
+            AffichageDossierCollaborateur(Doubleliste->Liste_Dossier,Doubleliste->Liste_Collabo);
             state = MENU_PRINCIPAL;
             break;
 
-        case STATISTIQUE_COLLABRATEUR:
-            printf("statistique collaborateur\n");
+        case AJOUTER_UN_DOSSIER:
+            printf("\najouter un dossier\n");
+            creerDossier(Doubleliste->Liste_Dossier);
             state = MENU_PRINCIPAL;
             break;
 
-        case AFFICHER_INFORMATION_DOSSIER:
-            printf("Afficher les donnee d'un dossier\n");
-            affichageDossier(Doubleliste->Liste_Dossier);
+        case MODIFIER_UN_DOSSIER:
+            printf("\nmodifier un dossier\n");
+            modifierDossier(Doubleliste->Liste_Dossier);
+            state = MENU_PRINCIPAL;
+            break;
+
+        case AJOUTER_UN_COLLABORATEUR:
+            printf("\najouter un collaborateur\n");
+            AjoutCollaborateur(Doubleliste->Liste_Collabo);
+            state = MENU_PRINCIPAL;
+            break;
+
+        case MODIFIER_UN_COLLABORATEUR:
+            printf("\nmodifier un collaborateur\n");
+            modifierCollaborateur(Doubleliste->Liste_Collabo);
+            state = MENU_PRINCIPAL;
+            break;
+
+        case SUPPRIMER_UN_COLLABORATEUR:
+            printf("\nSuprimer un dossier\n");
+            supprimerCollaborateur(Doubleliste->Liste_Collabo);
+            state = MENU_PRINCIPAL;
+            break;
+
+        case SAUVEGARDE_FICHIER:
+            printf("\nsauvegarde fichier\n");
+            SauvegardeFichier(Doubleliste->Liste_Dossier,Doubleliste->Liste_Collabo);
             state = MENU_PRINCIPAL;
             break;
 

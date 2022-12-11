@@ -3,36 +3,48 @@
 #include <string.h>
 #include "chargeDossier.h"
 
+//Affiche les information d'un dossier spécifique
 void affichageDossier(Liste *liste){
     char Affiche[20];
     int Validation_Nom=0;
 
     printf("Choisissez le dossier a consulter:\n");
-    defilee_liste(liste);               //liste les dossier existant
+    //defilee_liste(liste);
+    affichliste(liste);
     printf("---------------\n");
-    //void verificationSaisie(Liste *liste);
 
-    scanf("%s",Affiche);
     Dossier *actuel;
-    actuel = liste->premier;
-    /*while(Validation_Nom!=1)            //Verifie que le nom de dossier existe
-    {
-        scanf("%s\n",Affiche);
+    int ValidationNomDossier=0;
+    while(ValidationNomDossier!=1){
         actuel = liste->premier;
-        while (actuel != NULL)
-        {
+        scanf("%s",&Affiche);
+        while((actuel!=NULL)&&(ValidationNomDossier!=1)){
             if(strcmp(actuel->Nom_Dossier,Affiche)==0){
-                Validation_Nom=1;
-                break;
+                ValidationNomDossier=1;
             }
             else{
-            actuel = actuel->suivant;
+               actuel= actuel->suivant;
             }
         }
-    }*/
-    while (strcmp(actuel->Nom_Dossier,Affiche)!=0)          //Affiche les informations du dossier
+    }
+    afficheInformationDossier(liste,Affiche);
+}
+
+/*void defilee_liste(Liste *liste){
+    Dossier *actuel = liste->premier;
+    while (actuel != NULL)
     {
-        //printf("%s",Affiche);
+        printf("%s\n", actuel->Nom_Dossier);
+        actuel = actuel->suivant;
+    }
+}*/
+
+//Affiche les informations du dossier sélectionné
+void afficheInformationDossier(Liste *liste,char *Affiche){
+    Dossier *actuel;
+    actuel = liste->premier;
+    while (strcmp(actuel->Nom_Dossier,Affiche)!=0)
+    {
         actuel = actuel->suivant;
     }
     printf("Nom du dossier:%s\n",actuel->Nom_Dossier);
@@ -43,11 +55,3 @@ void affichageDossier(Liste *liste){
     printf("Clerc en charge du dossier:%s\n",actuel->Nom_clerc);
 }
 
-void defilee_liste(Liste *liste){
-    Dossier *actuel = liste->premier;
-    while (actuel != NULL)
-    {
-        printf("%s\n", actuel->Nom_Dossier);
-        actuel = actuel->suivant;
-    }
-}
